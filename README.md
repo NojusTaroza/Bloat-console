@@ -46,7 +46,7 @@ BloatConsole is a high-performance, production-ready developer console that brin
 
 1. Open **Window → Package Manager**
 2. Click the **+** button → **Add package from git URL**
-3. Enter: `https://github.com/noahsbloat/BloatConsole.git`
+3. Enter: `https://github.com/NojusTaroza/BloatConsole.git`
 4. Click **Add**
 
 ### **Manual Installation**
