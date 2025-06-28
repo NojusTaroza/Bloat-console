@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" 
+       xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       engine="UnityEngine.UIElements" 
+       editor="UnityEditor.UIElements" 
+       noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" 
+       editor-extension-mode="False">
+    
+    <Style src="project://database/Packages/com.noahsbloat.bloatconsole/Runtime/Resources/BloatConsole/console-styles.uss?fileID=7433441132597879392&amp;guid=14cc77d7508be554382bd85e5c9a9723&amp;type=3#console-styles" />
+    
+    <ui:VisualElement name="console-root" class="console-root">
+        <ui:VisualElement name="console-container" class="console-container">
+            
+            <!-- Output Area (Main content at top) -->
+            <ui:ScrollView name="output-scroll" class="output-scroll" mode="Vertical">
+                <ui:VisualElement name="output-content" class="output-content" />
+            </ui:ScrollView>
+            
+            <!-- Input Area (At bottom) -->
+            <ui:TextField name="input-field" 
+                         class="input-field"
+                         placeholder-text="> Enter command..."
+                         multiline="false" />
+            
+            <!-- Suggestions Container (Must be AFTER input for proper layering) -->
+            <ui:VisualElement name="suggestions-container" class="suggestions-container">
+                <ui:ScrollView name="suggestions-scroll" 
+                              class="suggestions-scroll" 
+                              mode="Vertical"
+                              horizontal-scroller-visibility="Hidden">
+                    <ui:VisualElement name="suggestions-content" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+            
+            <!-- Legacy Suggestions Area (Hidden) -->
+            <ui:Label name="suggestion-label" 
+                     class="suggestion-label"
+                     text=""
+                     style="display: none;" />
+                     
+        </ui:VisualElement>
+    </ui:VisualElement>
+    
+</ui:UXML>

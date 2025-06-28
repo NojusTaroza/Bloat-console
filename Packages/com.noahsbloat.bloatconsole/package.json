@@ -1,0 +1,24 @@
+{
+  "name": "com.noahsbloat.bloatconsole",
+  "version": "1.0.0",
+  "displayName": "BloatConsole",
+  "description": "Professional developer console for Unity with Unreal Engine-style command system",
+  "unity": "2022.3",
+  "author": {
+    "name": "noahsbloat",
+    "url": "https://github.com/noahsbloat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noahsbloat/BloatConsole.git"
+  },
+  "keywords": [
+    "console",
+    "developer",
+    "debug",
+    "commands",
+    "runtime"
+  ],
+  "category": "Debugging",
+  "dependencies": {}
+}

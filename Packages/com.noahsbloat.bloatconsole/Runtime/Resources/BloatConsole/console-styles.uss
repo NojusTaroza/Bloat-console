@@ -1,0 +1,266 @@
+/* BloatConsole - Bottom Console with Unreal-style Suggestions */
+
+/* ========================================
+   ROOT & CONTAINER STYLES
+   ======================================== */
+
+.console-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.console-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: rgba(20, 20, 20, 0.95);
+    border-top-width: 2px;
+    border-top-color: rgba(51, 153, 255, 1);
+    transition-duration: 0.3s;
+    transition-property: translate;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   OUTPUT AREA STYLES
+   ======================================== */
+
+.output-scroll {
+    flex: 1;
+    margin: 10px 10px 5px 10px;
+    background-color: rgba(13, 13, 13, 0.8);
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgba(40, 40, 40, 0.8);
+}
+
+.output-content {
+    padding: 4px;
+}
+
+/* ========================================
+   INPUT FIELD STYLES
+   ======================================== */
+
+.input-field {
+    height: 20px;
+    margin: 5px 10px 10px 10px;
+    background-color: rgba(38, 38, 38, 1);
+    color: rgba(255, 255, 255, 1);
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: rgba(77, 77, 77, 1);
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 12px;
+    transition-duration: 0.2s;
+    transition-property: border-color, background-color;
+}
+
+.input-field:focus {
+    border-color: rgba(51, 153, 255, 1);
+    background-color: rgba(46, 46, 46, 1);
+}
+
+.input-field:hover {
+    border-color: rgba(102, 102, 102, 1);
+}
+
+/* Placeholder text styling */
+.input-field > .unity-text-field__input {
+    color: rgba(255, 255, 255, 1);
+    background-color: transparent;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ========================================
+   SUGGESTIONS CONTAINER - NEW
+   ======================================== */
+
+.suggestions-container {
+    position: absolute;
+    bottom: 50px;  /* Above input field */
+    left: 10px;
+    right: 10px;
+    max-height: 120px;
+    background-color: rgba(25, 25, 25, 0.98);
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgba(51, 153, 255, 0.8);
+    overflow: hidden;
+    display: none;
+}
+
+.suggestions-scroll {
+    max-height: 120px;
+}
+
+.suggestion-item {
+    padding: 4px 8px;
+    color: rgba(220, 220, 220, 1);
+    font-size: 11px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(40, 40, 40, 0.5);
+    transition-duration: 0.1s;
+    transition-property: background-color;
+}
+
+.suggestion-item:hover {
+    background-color: rgba(51, 153, 255, 0.2);
+}
+
+.suggestion-item--selected {
+    background-color: rgba(51, 153, 255, 0.4);
+    color: rgba(255, 255, 255, 1);
+}
+
+.suggestion-item--command {
+    color: rgba(102, 204, 255, 1);
+}
+
+.suggestion-item--variable {
+    color: rgba(255, 204, 102, 1);
+}
+
+.suggestion-meta {
+    color: rgba(150, 150, 150, 0.8);
+    font-size: 9px;
+    margin-left: 8px;
+}
+
+/* ========================================
+   LEGACY SUGGESTION LABEL (Hidden)
+   ======================================== */
+
+.suggestion-label {
+    display: none !important;  /* Hide old suggestion system */
+}
+
+/* ========================================
+   LOG ENTRY STYLES
+   ======================================== */
+
+.log-entry {
+    color: rgba(230, 230, 230, 1);
+    font-size: 11px;
+    padding: 1px 6px;
+    white-space: normal;
+    -unity-text-align: upper-left;
+}
+
+.log-entry--command {
+    color: rgba(102, 204, 255, 1);
+    -unity-font-style: bold;
+}
+
+.log-entry--error {
+    color: rgba(255, 102, 102, 1);
+}
+
+.log-entry--warning {
+    color: rgba(255, 204, 102, 1);
+}
+
+.log-entry--assert {
+    color: rgba(255, 153, 204, 1);
+}
+
+/* ========================================
+   ANIMATION CLASSES
+   ======================================== */
+
+.console-container--hidden {
+    translate: 0 100%;  /* Slide down instead of up */
+}
+
+.console-container--visible {
+    translate: 0 0;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+.console-container--small {
+    height: 30%;
+}
+
+.console-container--large {
+    height: 70%;
+}
+
+/* ========================================
+   THEME VARIATIONS
+   ======================================== */
+
+.console-root--dark-theme .console-container {
+    background-color: rgba(15, 15, 15, 0.98);
+    border-top-color: rgba(51, 153, 255, 1);
+}
+
+.console-root--dark-theme .output-scroll {
+    background-color: rgba(8, 8, 8, 0.9);
+}
+
+.console-root--dark-theme .input-field {
+    background-color: rgba(25, 25, 25, 1);
+    border-color: rgba(60, 60, 60, 1);
+}
+
+.console-root--dark-theme .suggestions-container {
+    background-color: rgba(20, 20, 20, 0.98);
+    border-color: rgba(51, 153, 255, 0.9);
+}
+
+/* ========================================
+   SCROLLBAR CUSTOMIZATION
+   ======================================== */
+
+.output-scroll > .unity-scroll-view__content-viewport > .unity-scroll-view__content-container {
+    padding: 2px;
+}
+
+.output-scroll .unity-scroller--vertical {
+    width: 12px;
+}
+
+.output-scroll .unity-scroller--vertical .unity-scroller__slider {
+    background-color: rgba(80, 80, 80, 0.6);
+    border-radius: 6px;
+    margin: 2px;
+}
+
+.output-scroll .unity-scroller--vertical .unity-scroller__slider:hover {
+    background-color: rgba(120, 120, 120, 0.8);
+}
+
+.suggestions-scroll .unity-scroller--vertical {
+    width: 8px;
+}
+
+.suggestions-scroll .unity-scroller--vertical .unity-scroller__slider {
+    background-color: rgba(80, 80, 80, 0.6);
+    border-radius: 4px;
+}
+
+/* ========================================
+   FOCUS MANAGEMENT
+   ======================================== */
+
+.input-field:focus > .unity-text-field__input {
+    background-color: transparent;
+}
+
+/* Ensure proper text selection visibility */
+.unity-text-field__input--selected {
+    background-color: rgba(51, 153, 255, 0.3);
+}
